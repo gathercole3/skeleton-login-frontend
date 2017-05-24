@@ -1,0 +1,2 @@
+required environment variables
+GOOGLE_CLIENT_ID
