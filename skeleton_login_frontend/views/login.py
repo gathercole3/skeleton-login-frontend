@@ -1,8 +1,8 @@
-from flask import request, Blueprint, Response, jsonify, current_app
+from flask import Blueprint, render_template
 
-login = Blueprint('login', __name__)
+login = Blueprint('login', __name__, template_folder='templates')
 
 
 @login.route("/login")
 def display_login_page():
-    return "tmp"
+    return render_template('pages/display_logins.html')
