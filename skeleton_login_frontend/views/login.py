@@ -13,7 +13,7 @@ def display_login_page():
 def validate_google_token():
     post_data = request.form
 
-    url = "http://skeleton_login_api:8000/verify_google_token"
+    url = current_app.config["LOGIN_API_URL"] + "/verify_google_token"
     headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
     payload = {}
     payload["token"] = post_data['authorization_grant']
