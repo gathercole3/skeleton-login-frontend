@@ -1,0 +1,3 @@
+required environment variables
+GOOGLE_CLIENT_ID
+LOGIN_API_URL
