@@ -7,12 +7,14 @@
 {% endblock %}
 
 {% block content %}
-<div name="manual login">
-  <form action="./login/validate_login" method="post">
+<div name="register">
+  <form action="./validate_register" method="post">
     Email:<br>
     <input type="text" name="email"><br>
     Password:<br>
     <input type="password" name="password">
+    Password Again:<br>
+    <input type="password" name="password_verify">
     <input type="submit" value="Submit">
   </form>
 </div>

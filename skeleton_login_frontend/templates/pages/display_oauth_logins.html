@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<!-- this script must be loaded before the rest of the page content so we include it with the stylesheets-->
+<meta name="google-signin-client_id" content="{{config['GOOGLE_CLIENT_ID']}}">
+{% endblock %}
+
+{% block style %}
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+{% endblock %}
+
+{% block content %}
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+{% endblock %}
+
+{% block script %}
+<script>
+  function onSignIn(googleUser) {
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log('TOKEN: ' + id_token);
+    post('./login/oauthGoogleValidate', {authorization_grant: id_token});
+  }
+
+
+  function post(path, params, method) {
+    method = method || "post"; // Set method to post by default if not specified.
+
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", path);
+
+    for(var key in params) {
+        if(params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", key);
+            hiddenField.setAttribute("value", params[key]);
+
+            form.appendChild(hiddenField);
+         }
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+}
+</script>
+{% endblock %}
