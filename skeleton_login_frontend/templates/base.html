@@ -1,9 +1,10 @@
 <html>
   <head>
+    <base href="{{request.url_root [5:]}}">
     {% block meta %}{% endblock %}
     <!-- css includes -->
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/custom.css">
+    <link rel="stylesheet" href="./static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./static/css/custom.css">
     {% block style %}{% endblock %}
   </head>
 
@@ -18,7 +19,7 @@
   </body>
 
   <!-- script includes -->
-  <script src="/static/js/jquery.min.js"></script>
-  <script src="/static/js/bootstrap.min.js"></script>
+  <script src="./static/js/jquery.min.js"></script>
+  <script src="./static/js/bootstrap.min.js"></script>
   {% block script %}{% endblock %}
 </html>
